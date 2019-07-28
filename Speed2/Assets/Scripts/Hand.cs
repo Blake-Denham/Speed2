@@ -16,9 +16,10 @@ public class Hand : MonoBehaviour
     private Rigidbody _rigidbody;
     private bool _canJump = true;
     private bool _fistMode = false;
-
+    private Animator _animator;
     void Start()
     {
+        _animator = GetComponentInChildren<Animator>();
         _rigidbody = GetComponent<Rigidbody>();
         CurrentSpeed = NormalSpeed;
     }
@@ -29,6 +30,8 @@ public class Hand : MonoBehaviour
         {
             _fistMode = !_fistMode;
             CurrentSpeed = _fistMode ? FistSpeed : NormalSpeed;
+            _rigidbody.mass = _fistMode ? 1000f : 1f;
+            _animator.SetBool("isBoosting", _fistMode);
         }
     }
 
@@ -46,6 +49,7 @@ public class Hand : MonoBehaviour
             if (_canJump && Input.GetButton("Jump"))
             {
                 Jump();
+                
                 _canJump = false;
             }
 
@@ -58,11 +62,13 @@ public class Hand : MonoBehaviour
 
     internal void Jump()
     {
+        _animator.SetBool("isJumping", true);
         _rigidbody.velocity = Vector3.zero;
         _rigidbody.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
     }
 
     internal void CanJump(bool val)
+    
     {
         _canJump = val;
     }
@@ -71,6 +77,7 @@ public class Hand : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground"))
         {
+            _animator.SetBool("isJumping", false);
             CanJump(true);
         }
 
