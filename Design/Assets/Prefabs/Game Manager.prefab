@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3807409225437759004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3807409225437758994}
+  - component: {fileID: 3807409225437758995}
+  - component: {fileID: 3807409225437758993}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3807409225437758994
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3807409225437759004}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3807409225437758995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3807409225437759004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b088da43f918074db766f117601b13f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paused: 0
+  window: {fileID: 0}
+  quitButton: {fileID: 0}
+  restartButton: {fileID: 0}
+  greenWindow: {fileID: 0}
+  redWindow: {fileID: 0}
+  quitWindow: {fileID: 0}
+--- !u!114 &3807409225437758993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3807409225437759004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8beefe9069cf7c4e97a0ca6f4d65d5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powPrefab: {fileID: 8856514076188629919, guid: 959d2735f0561d64bb77cb2a602a453b,
+    type: 3}
+  fistModePow: {fileID: 8856514076188629919, guid: 2d2989fee647cde498ae7de8ac7107ae,
+    type: 3}
+  orangePowParticles: {fileID: 1408471671311307916, guid: db97adef55bb34e40aa4724da8c1fe4f,
+    type: 3}
+  redPowParticles: {fileID: 1408471671311307916, guid: c81570dbd0360c146b1dc2f1e3cb3656,
+    type: 3}
+  yellowPowParticles: {fileID: 1408471671311307916, guid: 25b6a2e85028ea544867e070bb8a4c5f,
+    type: 3}
+  player: {fileID: 0}
+  trailContainer: {fileID: 0}
+  blueFistModeParticles: {fileID: 1408471671311307916, guid: fcaf4cee6d686f44981f7ee8353509f0,
+    type: 3}
+  lightBlueFistModeParticles: {fileID: 1408471671311307916, guid: cb1cc6add7338b644945ef541ec474f0,
+    type: 3}
+  purpleFistModeParticles: {fileID: 1408471671311307916, guid: b769b29198c7b6a448143014f513714a,
+    type: 3}
