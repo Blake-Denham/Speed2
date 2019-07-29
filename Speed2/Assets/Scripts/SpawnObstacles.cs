@@ -5,21 +5,34 @@ using UnityEngine;
 
 public class SpawnObstacles : MonoBehaviour
 {
+    public float ObjectsPerMeter = 0.5f;
     public GameObject[] Obstacles;
-    
-    private Transform _spawnPoint;
+    public float HorizontalVariance = 3f;
 
-    private bool mustSpawn;
+
+    private Transform _spawnPoint;
+    private float _dist;
 
     void Start()
     {
         _spawnPoint = transform;
     }
-    
-    public void Spawn()
+
+    void Update()
+    {
+        _dist += Hand.CurrentSpeed * Time.deltaTime;
+        if (_dist > 0.5f / ObjectsPerMeter)
+        {
+            _dist = 0f;
+            Spawn();
+        }
+    }
+
+    private void Spawn()
     {
         Instantiate(Obstacles[Random.Range(0, Obstacles.Length)],
-            _spawnPoint.position,
-            transform.rotation);
+            _spawnPoint.position +
+            new Vector3(Random.Range(-HorizontalVariance / 2f, HorizontalVariance / 2f), 0, 0),
+            Quaternion.identity);
     }
 }
