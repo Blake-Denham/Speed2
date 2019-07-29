@@ -8,7 +8,7 @@ public class Launch : MonoBehaviour
     {
         if (other.CompareTag("Hand"))
         {
-            var hand = other.gameObject.GetComponentInParent<Hand>();
+            var hand = FindObjectOfType<Hand>();
             if (!hand.FistMode())
             {
                 Debug.Log("Jumping");
