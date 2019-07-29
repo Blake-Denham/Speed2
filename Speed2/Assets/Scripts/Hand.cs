@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class Hand : MonoBehaviour
 {
+    public float totalDist;
+    public Vector3 farBeginOffset;
+    public Vector3 farEndOffset;
+    public float distMult = 2f;
+    public GameObject closeBegin, closeEnd;
+    public GameObject farBegin, farEnd;
     public static float CurrentSpeed = 10;
     public float JumpForce;
     public float FistForce = 100;
@@ -17,6 +23,7 @@ public class Hand : MonoBehaviour
     private bool _canJump = true;
     private bool _fistMode = false;
     private Animator _animator;
+
     void Start()
     {
         _animator = GetComponentInChildren<Animator>();
@@ -26,6 +33,33 @@ public class Hand : MonoBehaviour
 
     private void Update()
     {
+        farBegin.transform.position = new Vector3(0, closeBegin.transform.position.y*distMult, 0)+farBeginOffset;
+        farEnd.transform.position = new Vector3(0, closeEnd.transform.position.y*distMult,0)+farEndOffset;
+        
+        var diff1 = closeEnd.transform.position - closeBegin.transform.position;
+        var diff2 = farEnd.transform.position - farBegin.transform.position;
+        for (int i = 0; i < 25; i++)
+        {
+            var s = closeBegin.transform.position + diff1 * i / 24;
+            var e = farBegin.transform.position + diff2 * i / 24;
+            RaycastHit hit;
+            // Does the ray intersect any objects excluding the player layer
+            if (Physics.Raycast(s, e-s, out hit,
+                (e-s).magnitude))
+            {
+                Debug.DrawRay(s, (e-s).normalized * hit.distance,
+                    Color.yellow);
+                if (hit.collider.gameObject.CompareTag("Obstacle"))
+                {
+                    
+                }
+            }
+            else
+            {
+                Debug.DrawRay(s, e-s, Color.white);
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.F))
         {
             _fistMode = !_fistMode;
@@ -49,7 +83,6 @@ public class Hand : MonoBehaviour
             if (_canJump && Input.GetButton("Jump"))
             {
                 Jump();
-                
                 _canJump = false;
             }
 
@@ -68,7 +101,7 @@ public class Hand : MonoBehaviour
     }
 
     internal void CanJump(bool val)
-    
+
     {
         _canJump = val;
     }
