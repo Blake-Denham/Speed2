@@ -51,7 +51,12 @@ public class Hand : MonoBehaviour
                     Color.yellow);
                 if (hit.collider.gameObject.CompareTag("Obstacle"))
                 {
-                    
+                    var obstacle = hit.collider.GetComponent<Obstacle>();
+                    if (obstacle == null)
+                    {
+                        obstacle = hit.collider.GetComponentInParent<Obstacle>();
+                    }
+                    obstacle.Explode(100f);
                 }
             }
             else

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
+    public float extraSpeed;
     private bool _exploded;
 
     // Update is called once per frame
@@ -13,9 +14,9 @@ public class Obstacle : MonoBehaviour
         {
         }
         else
-            transform.position += Time.fixedDeltaTime * Hand.CurrentSpeed * Vector3.right;
+            transform.position += Time.fixedDeltaTime * (Hand.CurrentSpeed+extraSpeed) * Vector3.right;
     }
-
+    
     public void Explode(float force)
     {
         _exploded = true;
